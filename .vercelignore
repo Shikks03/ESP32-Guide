@@ -1,0 +1,5 @@
+labs/*/.pio/
+labs/*/.vscode/
+labs/*/include/secrets.h
+web/node_modules/
+web/dist/

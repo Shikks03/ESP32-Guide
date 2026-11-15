@@ -8,3 +8,5 @@ web/dist/
 *.local
 .DS_Store
 Thumbs.db
+
+.vercel
