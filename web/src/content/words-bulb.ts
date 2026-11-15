@@ -1,0 +1,173 @@
+import type { Word } from './types';
+
+/**
+ * Word cards for the Smart bulb track (L1 to L3). Only ids that are not already in words.ts.
+ * The manager merges this list into WORDS.
+ */
+export const WORDS_BULB: Word[] = [
+  /* ---- PowerShell and curl (L1) ---- */
+  {
+    id: 'curl-exe',
+    term: 'curl.exe',
+    kind: 'function',
+    short: 'A command-line tool that sends a web request and prints the reply.',
+    long: "Windows ships a real `curl.exe`. In Windows PowerShell 5.1, plain `curl` is an alias for `Invoke-WebRequest`, a different command with different options, so type the `.exe` to get the real one. By default it sends a GET, the same request a browser makes when you open a URL.",
+    example: 'curl.exe --max-time 5 "http://192.168.1.50/rpc/Shelly.GetDeviceInfo"',
+  },
+  {
+    id: 'ps-variable',
+    term: '$bulb',
+    kind: 'concept',
+    short: 'A PowerShell variable. The name starts with $, and it fills in inside double quotes.',
+    long: "`$bulb = \"192.168.1.50\"` stores the text. Inside a double-quoted string, `$bulb` is swapped for its value, so `\"http://$bulb/rpc/...\"` becomes a full URL. Single quotes do not swap anything in, which is why the JSON later uses them.",
+    example: '$bulb = "192.168.1.50"',
+  },
+  {
+    id: 'ps-pipeline',
+    term: '|  (pipe)',
+    kind: 'concept',
+    short: 'Sends the output of one command into the next one.',
+    long: "`curl.exe ... | ConvertFrom-Json | Format-List` fetches the reply, turns the JSON text into an object, then prints its fields one per line. Same idea as chaining `.then()` calls, but with commands.",
+    example: 'curl.exe -s "http://$bulb/rpc/Shelly.GetDeviceInfo" | ConvertFrom-Json | Format-List',
+  },
+  {
+    id: 'ps-escape',
+    term: '[uri]::EscapeDataString',
+    kind: 'function',
+    short: 'Percent-encodes a piece of text so it is safe inside a URL.',
+    long: "Same job as `encodeURIComponent` in JavaScript. It turns `{\"enable\":false}` into `%7B%22enable%22%3Afalse%7D`: only plain letters and `%` codes, so PowerShell, curl and the bulb all agree on what was sent.",
+    example: "[uri]::EscapeDataString('{\"enable\":false}')",
+  },
+
+  /* ---- the API (L1 to L3) ---- */
+  {
+    id: 'rpc',
+    term: 'RPC',
+    kind: 'concept',
+    short: 'Remote procedure call: you call a named function on another machine over the network.',
+    long: "The bulb runs a tiny web server. A URL like `/rpc/RGBCCT.Set?id=0&on=true` means \"run the method `Set` of the component `RGBCCT`, with these arguments\". The reply is JSON. No account, no cloud, just HTTP on your own network.",
+    example: 'http://192.168.1.50/rpc/RGBCCT.GetStatus?id=0',
+  },
+  {
+    id: 'query-string',
+    term: '?a=1&b=2',
+    kind: 'concept',
+    short: 'The part of a URL after the ? that carries the arguments, joined with &.',
+    long: "Each argument is `name=value`, and they are separated by `&`. In PowerShell the `&` has a meaning of its own, so a URL that contains one must be in quotes. The ESP32 builds the same text with plain string joining.",
+    example: 'id=0&on=true&brightness=40&mode=cct&ct=3000',
+  },
+  {
+    id: 'url-encode',
+    term: 'percent-encoding',
+    kind: 'concept',
+    short: 'Writes awkward characters as % and two hex digits, so they survive inside a URL.',
+    long: "`[255,0,0]` has brackets and commas, which URLs can use for other things. Encoded it is `%5B255%2C0%2C0%5D`: `[` is `%5B`, `,` is `%2C`, `]` is `%5D`. Letters, digits and `- _ . ~` are left as they are.",
+    example: '%5B255%2C0%2C0%5D',
+  },
+  {
+    id: 'http-status',
+    term: 'HTTP status code',
+    kind: 'concept',
+    short: 'A number the server sends back: 200 means OK, 4xx means your request was wrong.',
+    long: "200 is success. 404 means no such address, 401 means a password is needed. On the ESP32, `http.GET()` returns the code, and a negative number means no HTTP conversation happened at all (nobody answered, or the connection failed).",
+    example: 'int code = http.GET();',
+  },
+
+  /* ---- C++ and Arduino (L2, L3) ---- */
+  {
+    id: 'has-include',
+    term: '__has_include',
+    kind: 'macro',
+    short: 'Asks the compiler: does this file exist? Used to pick between two includes.',
+    long: "`#if __has_include(\"secrets.h\")` is true when you made your own `secrets.h`. If not, the code falls back to `secrets.example.h`, so the project still builds on a fresh checkout. Your real Wi-Fi password never needs to be in a file that gets committed.",
+    example: '#if __has_include("secrets.h")',
+  },
+  {
+    id: 'pragma-once',
+    term: '#pragma once',
+    kind: 'macro',
+    short: 'Tells the compiler to read this header file only once, even if it is included twice.',
+    long: "Header files can end up included from several places. This line stops the second copy being pasted in, which would redefine the same names.",
+    example: '#pragma once',
+  },
+  {
+    id: 'wifi-join',
+    term: 'WiFi.begin / WiFi.status',
+    kind: 'function',
+    short: 'Start joining a network, then ask whether it worked.',
+    long: "`WiFi.mode(WIFI_STA)` makes the board a client, like a phone. `WiFi.begin(ssid, pass)` starts joining and returns straight away, so the code then polls `WiFi.status()` until it says `WL_CONNECTED` or time runs out.",
+    example: 'WiFi.begin(WIFI_SSID, WIFI_PASS);',
+  },
+  {
+    id: 'http-client',
+    term: 'HTTPClient',
+    kind: 'type',
+    short: 'Arduino-ESP32\'s built-in tool for making web requests. Think of it as a tiny fetch().',
+    long: "You create one, give it a URL with `begin()`, send a request with `GET()`, read the answer with `getString()` and tidy up with `end()`. It ships with the core, so no library to install. This lab only uses plain `http://`, never `https://`.",
+    example: 'HTTPClient http;',
+  },
+  {
+    id: 'http-get',
+    term: 'http.GET() / getString()',
+    kind: 'function',
+    short: 'Sends the request and returns the status code; getString() then returns the reply text.',
+    long: "`GET()` waits until the server answers or the timeout runs out. Positive numbers are HTTP codes. Negative numbers are errors from the ESP32 side. Only after a good code is it worth calling `getString()` to read the body.",
+    example: 'int code = http.GET();',
+  },
+  {
+    id: 'timeout',
+    term: 'timeout',
+    kind: 'concept',
+    short: 'How long to wait before giving up, so one dead device cannot freeze the whole program.',
+    long: "`setConnectTimeout(2000)` limits how long the board waits to reach the bulb, `setTimeout(3000)` limits how long it waits for the reply. Without them a wrong IP address could stall the program for much longer. Both numbers are in milliseconds.",
+    example: 'http.setConnectTimeout(2000);',
+  },
+  {
+    id: 'reference-param',
+    term: 'const String &',
+    kind: 'concept',
+    short: 'A function input that is passed by reference: no copy, and it cannot be changed.',
+    long: "The `&` means the function gets the original string, not a copy of it, which is cheaper for long text. `const` promises the function will not change it. You call the function the same way as with a plain `String`.",
+    example: 'bool callBulb(const String &method, const String &query)',
+  },
+  {
+    id: 'string-concat',
+    term: 'String + ...',
+    kind: 'concept',
+    short: 'The + sign joins text, and a number added to a String is turned into text.',
+    long: "`String(\"http://\") + BULB_IP + \"/rpc/\"` builds one long string. The first piece must be a `String` (not two bare quoted pieces), because plain quoted text cannot be added together in C++. Numbers like `s.brightness` are converted to digits automatically.",
+    example: 'String url = String("http://") + BULB_IP + "/rpc/" + method;',
+  },
+  {
+    id: 'strcmp',
+    term: 'strcmp',
+    kind: 'function',
+    short: 'Compares two C strings. Gives 0 when they are equal.',
+    long: "Plain quoted text (`const char *`) cannot be compared with `==` because that compares memory addresses. `strcmp(a, b) == 0` compares the letters. `strcmp(a, b) != 0` means \"different\". `String` objects are different: they overload `==`.",
+    example: 'strcmp(WIFI_SSID, PLACEHOLDER_SSID) != 0',
+  },
+  {
+    id: 'struct',
+    term: 'struct',
+    kind: 'keyword',
+    short: 'Bundles several values into one named type, like a plain object with fixed fields.',
+    long: "`struct Scene { ... }` defines the shape: a name, a mode, a brightness, and so on. Then `{ \"bed\", \"cct\", 10, 2700, 0, 0, 0 }` fills one in, in field order. Closest thing in TypeScript: an interface, with the values written positionally.",
+    example: 'struct Scene { const char *name; int brightness; };',
+  },
+  {
+    id: 'isalnum',
+    term: 'isalnum',
+    kind: 'function',
+    short: 'True if a character is a letter or a digit.',
+    long: "Part of the standard C library. The `(unsigned char)` cast in front of the argument is the safe way to call it, because a plain `char` can be negative for unusual characters.",
+    example: 'isalnum((unsigned char)c)',
+  },
+  {
+    id: 'snprintf',
+    term: 'snprintf',
+    kind: 'function',
+    short: 'Like printf, but writes into a small buffer instead of the serial port, and never overflows it.',
+    long: "`snprintf(hex, sizeof(hex), \"%%%02X\", c)` writes a `%`, then the byte as two hex digits, into `hex`. `%%` prints a literal percent sign. `%02X` is hex with a leading zero to two digits. The size argument stops it writing past the end of the buffer.",
+    example: 'snprintf(hex, sizeof(hex), "%%%02X", c);',
+  },
+];

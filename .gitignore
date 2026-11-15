@@ -1,0 +1,10 @@
+# firmware
+labs/*/.pio/
+labs/*/.vscode/
+labs/*/include/secrets.h
+# web
+web/node_modules/
+web/dist/
+*.local
+.DS_Store
+Thumbs.db

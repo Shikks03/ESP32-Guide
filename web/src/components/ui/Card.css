@@ -1,0 +1,2 @@
+.ui-card { display: grid; align-content: start; gap: 12px; padding: 16px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-l); }
+.ui-card-title { margin: 0; font: 700 13px var(--font-display); font-stretch: 75%; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }

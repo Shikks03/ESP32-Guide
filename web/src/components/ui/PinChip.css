@@ -1,0 +1,8 @@
+.ui-pinchip { display: inline-flex; align-items: stretch; overflow: hidden; border-radius: var(--radius-s); font: 600 12px var(--font-mono); max-width: 100%; }
+.ui-pinchip b { white-space: nowrap; }
+.ui-pinchip span { min-width: 0; overflow-wrap: anywhere; }
+.ui-pinchip b, .ui-pinchip span { padding: 2px 8px; font-weight: 600; }
+.ui-pinchip[data-kind="signal"] { border: 1px solid color-mix(in oklab, var(--copper) 55%, var(--line)); background: color-mix(in oklab, var(--copper) 10%, var(--surface)); color: var(--ink); }
+.ui-pinchip[data-kind="signal"] b { background: var(--copper); color: var(--surface); }
+.ui-pinchip[data-kind="power"] { border: 1px solid var(--pcb-edge); background: var(--pcb); color: var(--silk); }
+.ui-pinchip[data-kind="power"] b { background: var(--pcb-edge); color: var(--silk); }

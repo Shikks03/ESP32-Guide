@@ -1,0 +1,3 @@
+/* Mixed-case section title, as the reference site's lesson and datasheet sections (800 20px display). */
+.ui-sechead { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 0; font: 800 20px/1.3 var(--font-display); }
+.ui-sechead-n { font: 600 13px var(--font-mono); letter-spacing: .04em; color: var(--track, var(--copper)); }

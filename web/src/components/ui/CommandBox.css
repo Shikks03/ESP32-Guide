@@ -1,0 +1,4 @@
+.ui-cmd { display: flex; align-items: stretch; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; }
+.ui-cmd code { flex: 1; min-width: 0; padding: 9px 12px; overflow-x: auto; white-space: pre; background: var(--bg); font: 13px var(--font-mono); }
+.ui-cmd button { min-width: 72px; padding: 0 12px; font: 600 12px var(--font-mono); color: var(--ink); background: var(--surface); border: 0; border-inline-start: 1px solid var(--line); cursor: pointer; }
+.ui-cmd button:hover { color: var(--copper); }

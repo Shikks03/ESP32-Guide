@@ -1,0 +1,5 @@
+.ui-mark { --size: 12px; display: inline-grid; place-items: center; flex: none; width: var(--size); height: var(--size); box-sizing: border-box; border-radius: 50%; }
+.ui-mark[data-state="done"] { background: var(--ok); color: var(--surface); padding: 1px; }
+.ui-mark[data-state="runs"] { background: var(--ok); box-shadow: inset 0 0 0 2.5px var(--ok), inset 0 0 0 4px var(--surface); }
+.ui-mark[data-state="built"] { border: 2px solid var(--warn); }
+.ui-mark[data-state="planned"] { border: 1.5px dashed var(--muted); opacity: .8; }

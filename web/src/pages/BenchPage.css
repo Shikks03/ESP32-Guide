@@ -1,0 +1,72 @@
+.bench { display: grid; gap: 28px; padding-block: 8px 48px; min-width: 0; }
+.bench-sec { display: grid; gap: 12px; min-width: 0; }
+.bench-h1, .bench-h2 { margin: 0; font: 800 28px/1.15 var(--font-display); letter-spacing: -.01em; color: var(--ink); }
+.bench-h2 { font-size: 24px; }
+.bench-now-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px; margin-bottom: 12px; }
+.bench-specs { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0; font: 13px var(--font-mono); color: var(--muted); }
+.bench-specs strong { color: var(--ink); font-weight: 700; }
+
+.bench-now { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-l); overflow: hidden; }
+.bench-row { display: grid; align-content: start; gap: 6px; padding: 14px 16px; min-width: 0; border-inline-start: 1px solid var(--line); border-top: 1px solid var(--line); }
+.bench-row-hero { grid-column: 1 / -1; background: var(--copper-soft); border: 0; }
+.bench-row-v { font: 700 17px/1.3 var(--font-display); color: var(--ink); overflow-wrap: anywhere; }
+.bench-row-hero .bench-row-v { font-size: 20px; color: var(--copper); }
+.bench-row-sub { font: 12px/1.5 var(--font-mono); color: var(--muted); overflow-wrap: anywhere; }
+
+.bench-note { margin: 0; max-width: 62ch; color: var(--ink); }
+.bench-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.bench-chip { display: inline-flex; gap: 6px; align-items: center; min-height: 34px; padding: 4px 12px; font: 600 13px var(--font-mono); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; cursor: pointer; }
+.bench-chip span { font-weight: 400; color: var(--muted); }
+.bench-chip[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.bench-chip[aria-pressed="true"] span { color: var(--surface); opacity: .8; }
+
+.bench-strip-card { display: grid; gap: 10px; padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-l); }
+.bench-strip { display: flex; flex-wrap: wrap; gap: 4px; }
+.bench-cell { width: 18px; height: 26px; border-radius: 4px; background: var(--line); display: grid; place-items: center; font: normal 700 11px var(--font-mono); color: var(--surface); }
+.bench-cell[data-type="failed"]::after { content: "×"; }
+.bench-cell[data-type="flash"] { background: var(--copper); }
+.bench-cell[data-type="failed"] { background: var(--danger); }
+.bench-cell[data-dim] { opacity: .3; }
+.bench-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0; padding: 0; list-style: none; font: 12px var(--font-mono); color: var(--muted); }
+.bench-legend li { display: inline-flex; align-items: center; gap: 6px; }
+.bench-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); display: inline-block; }
+.bench-dot[data-type="flash"] { background: var(--copper); }
+.bench-dot[data-type="failed"] { background: var(--danger); }
+
+.bench-empty { margin: 0; padding: 18px; color: var(--muted); background: var(--surface); border: 1px dashed var(--line); border-radius: var(--radius-l); }
+
+/* entries: plain cards, no rail (as on the reference site); flash entries get a copper edge */
+.bench-timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.bench-entry { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px 12px; padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-l); min-width: 0; scroll-margin-top: 12px; }
+@media (min-width: 480px) { .bench-entry { grid-template-columns: 44px minmax(0, 1fr); } }
+.bench-entry[data-type="flash"] { border-color: var(--copper); box-shadow: inset 4px 0 0 var(--copper); }
+.bench-node { display: none; }
+.bench-num { font: 600 20px var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.bench-body { display: grid; gap: 10px; min-width: 0; }
+.bench-title { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.bench-title strong { font: 700 16px var(--font-display); color: var(--ink); overflow-wrap: anywhere; }
+.bench-ctx { font: 12px var(--font-mono); color: var(--muted); }
+.bench-tag { font: 600 11px var(--font-mono); text-transform: uppercase; letter-spacing: .04em; color: var(--muted); border: 1px solid; border-radius: 5px; padding: 2px 8px; }
+.bench-tag[data-type="install"] { color: var(--warn); }
+.bench-tag[data-type="read"] { color: var(--ok); }
+.bench-tag[data-type="reset"] { color: var(--power); }
+.bench-tag[data-type="failed"] { color: var(--danger); }
+.bench-tag[data-type="flash"] { color: var(--surface); background: var(--copper); border-color: var(--copper); }
+.bench-why, .bench-result { margin: 0; max-width: 70ch; overflow-wrap: anywhere; }
+.bench-result { font-size: 14px; color: var(--ink); }
+.bench-result strong { font: 700 11px var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-inline-end: 6px; }
+
+.bench-table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-l); }
+.bench-table { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 14px; }
+.bench-table th { text-align: start; padding: 10px 14px; font: 600 11px var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); border-bottom: 1px solid var(--line); }
+.bench-table td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.bench-table tr:last-child td { border-bottom: 0; }
+.bench-table code { font: 13px var(--font-mono); }
+.bench-num-cell { font: 13px var(--font-mono); white-space: nowrap; text-align: end; }
+.bench-foot { margin: 0; max-width: 70ch; font-size: 13.5px; color: var(--muted); }
+
+@media (max-width: 560px) {
+  .bench-h1 { font-size: 24px; }
+  .bench-entry { grid-template-columns: minmax(0, 1fr); padding: 12px 12px 12px 16px; }
+  .bench-num { font-size: 14px; margin-bottom: 4px; }
+}

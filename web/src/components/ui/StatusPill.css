@@ -1,0 +1,3 @@
+.ui-pill { display: inline-flex; align-items: center; gap: 6px; padding-block: 3px; padding-inline: 6px 10px; white-space: nowrap; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); font: 600 11.5px var(--font-mono); letter-spacing: .02em; }
+.ui-pill[data-state="done"], .ui-pill[data-state="runs"] { border-color: color-mix(in oklab, var(--ok) 45%, transparent); background: color-mix(in oklab, var(--ok) 10%, var(--surface)); }
+.ui-pill[data-state="built"] { border-color: color-mix(in oklab, var(--warn) 45%, transparent); background: color-mix(in oklab, var(--warn) 9%, var(--surface)); }

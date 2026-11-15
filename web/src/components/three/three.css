@@ -1,0 +1,32 @@
+/* 3D board + chip layers. Prefix b3d-. Colours come from tokens only. */
+.b3d { display: grid; gap: 10px; justify-items: center; min-width: 0; }
+.b3d-view { position: relative; width: 100%; aspect-ratio: 4 / 3; min-height: 240px; max-height: 680px; overflow: hidden; isolation: isolate; border-radius: 12px; touch-action: none; }
+.b3d-view-tall { aspect-ratio: 4 / 3; }
+.b3d-view canvas { display: block; outline: none; }
+.b3d-hint { position: absolute; top: 6px; left: 0; right: 0; margin: 0; text-align: center; font: 12px var(--font-mono); color: var(--muted); pointer-events: none; z-index: 2; }
+
+.b3d-hot { display: grid; place-items: center; width: 26px; height: 26px; padding: 0; border-radius: 50%; border: 2px solid var(--surface); background: var(--hotspot); color: var(--surface); font: 700 11px var(--font-mono); box-shadow: 0 0 0 4px color-mix(in oklab, var(--hotspot) 25%, transparent); cursor: pointer; transition: transform .2s; }
+.b3d-hot[data-on="true"] { transform: scale(1.3); box-shadow: 0 0 0 6px color-mix(in oklab, var(--hotspot) 35%, transparent); }
+.b3d-hot:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.b3d-hot::after { content: ""; position: absolute; inset: -9px; }
+[data-motion="calm"] .b3d-hot { transition: none; }
+
+.b3d-bar { display: inline-flex; align-items: center; gap: 2px; padding: 4px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 6px 18px color-mix(in oklab, var(--ink) 14%, transparent); }
+.b3d-bar button { display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border: 0; border-radius: 50%; background: none; color: var(--ink); cursor: pointer; }
+.b3d-bar button:hover { background: color-mix(in oklab, var(--hotspot) 16%, transparent); }
+.b3d-bar button:focus-visible { outline: 2px solid var(--hotspot); outline-offset: 1px; }
+.b3d-bar i { width: 1px; height: 20px; margin: 0 4px; background: var(--line); }
+
+.b3d-tag { display: inline-block; padding: 3px 8px; border-radius: 6px; background: var(--surface); color: var(--ink); border: 1px solid var(--hotspot); font: 600 12px var(--font-mono); white-space: nowrap; }
+.b3d-fam { display: inline-block; padding: 1px 6px; border-radius: 4px; background: color-mix(in oklab, var(--surface) 80%, transparent); color: var(--muted); font: 600 10px var(--font-mono); text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+
+.b3d-nogl { display: grid; gap: 8px; }
+.b3d-nogl-msg { margin: 0; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); font-size: 13px; }
+
+.b3d-loading { margin: 6px 0 0; text-align: center; font: 12px var(--font-mono); color: var(--muted); }
+.b3d-flat { display: flex; justify-content: center; margin-top: 8px; }
+.b3d-flat button { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 600 12px var(--font-mono); cursor: pointer; }
+.b3d-flat button:hover { border-color: var(--hotspot); }
+.b3d-flat button:focus-visible { outline: 2px solid var(--hotspot); outline-offset: 2px; }
+.b3d-flatwrap { position: relative; }
+.b3d-flatwrap .home-stage-hot { left: 0; right: 0; top: 0; }

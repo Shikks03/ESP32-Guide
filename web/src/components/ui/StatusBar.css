@@ -1,0 +1,7 @@
+/* Containing block for the visually-hidden summary, so it can't escape a horizontal scroller and widen the page. */
+.ui-bar { position: relative; }
+.ui-bar-strip { display: flex; flex-wrap: wrap; gap: 3px; margin: 0; padding: 0; list-style: none; }
+.ui-bar-strip li { width: 14px; height: 20px; border: 1.5px solid var(--line); border-radius: 2px; }
+.ui-bar-strip li[data-state="done"], .ui-bar-strip li[data-state="runs"] { background: var(--ok); border-color: var(--ok); }
+.ui-bar-strip li[data-state="built"] { border-color: var(--warn); background: color-mix(in oklab, var(--warn) 30%, var(--surface)); }
+.ui-bar-strip li[data-state="planned"] { border-style: dashed; border-color: var(--muted); opacity: .6; }

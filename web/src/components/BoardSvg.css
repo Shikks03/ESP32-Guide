@@ -1,0 +1,41 @@
+.ui-board { display: grid; gap: 8px; }
+.ui-board-svg { width: 100%; height: auto; display: block; max-height: 78vh; }
+.ui-board-pcb { fill: var(--pcb); stroke: var(--pcb-edge); stroke-width: 1.5; }
+.ui-board-mod { fill: var(--metal); stroke: var(--metal-dark); stroke-width: .8; }
+.ui-board-modtxt { font-family: var(--font-mono); font-size: 9px; fill: var(--model-ink); letter-spacing: .04em; }
+.ui-board-ant { stroke: var(--pad); stroke-width: 2.4; stroke-linejoin: round; }
+.ui-board-sil { font-family: var(--font-mono); font-size: 9.5px; fill: var(--silk); }
+.ui-board-chiptx { font-family: var(--font-mono); font-size: 8px; fill: var(--silk-dim); }
+.ui-board-ic { fill: var(--model-ink); stroke: var(--pcb-edge); stroke-width: .8; }
+.ui-board-btn { fill: var(--plastic); stroke: var(--metal-dark); stroke-width: .8; }
+.ui-board-usb { fill: var(--metal); stroke: var(--metal-dark); }
+.ui-board-usb-hl { stroke: var(--copper); stroke-width: 2.4; }
+.ui-board-usbhole { fill: var(--model-ink); }
+.ui-board-pwr-led { fill: var(--part-red); }
+.ui-board-led { fill: var(--part-sky); }
+.ui-board-leader { stroke: var(--copper); stroke-width: 1.2; fill: none; }
+.ui-board-ring { fill: none; stroke: var(--copper); stroke-width: 2; }
+.ui-board-tag { fill: var(--copper); }
+.ui-board-tag-dark { fill: var(--pcb-edge); stroke: var(--silk-dim); stroke-width: .8; }
+.ui-board-tagtx { font-family: var(--font-mono); font-size: 10px; fill: var(--surface); font-weight: 500; }
+.ui-board-tagtx-dark { fill: var(--silk); }
+.ui-board-hotspot { fill: color-mix(in oklab, var(--hotspot) 14%, transparent); stroke: var(--hotspot); stroke-width: 2; stroke-dasharray: 5 3; }
+
+/* pin colour categories */
+.ui-board-pin-used { fill: var(--copper); }
+.ui-board-pin-safe { fill: var(--pad); }
+.ui-board-pin-avoid { fill: var(--danger); }
+.ui-board-pin-power { fill: var(--power); }
+.ui-board-pin-gnd { fill: var(--gnd); stroke: var(--silk-dim); stroke-width: .8; }
+.ui-board-pin-input { fill: var(--w-sda); }
+
+.ui-board-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0; padding: 0; list-style: none; font: 12px var(--font-mono); color: var(--muted); }
+.ui-board-legend li { display: inline-flex; align-items: center; gap: 6px; }
+.ui-board-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; box-sizing: border-box; }
+.ui-board-dot-used { background: var(--copper); }
+.ui-board-dot-safe { background: var(--pad); }
+.ui-board-dot-avoid { background: var(--danger); }
+.ui-board-dot-power { background: var(--power); }
+.ui-board-dot-gnd { background: var(--gnd); border: 1px solid var(--silk-dim); }
+.ui-board-dot-input { background: var(--w-sda); }
+.ui-board-note { margin: 0; font-size: 12.5px; color: var(--muted); }

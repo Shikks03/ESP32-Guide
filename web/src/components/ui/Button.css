@@ -1,0 +1,8 @@
+.ui-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding-inline: 16px; font: 700 14px var(--font-display); text-decoration: none; cursor: pointer; border-radius: 999px; touch-action: manipulation; transition: border-color .2s, color .2s, background .2s, transform .08s; }
+.ui-btn:active { transform: translateY(1px); }
+.ui-btn-primary { background: var(--copper); color: var(--bg); border: 1px solid var(--copper); }
+.ui-btn-outline { background: var(--surface); color: var(--ink); border: 1px solid var(--line); }
+.ui-btn-outline:hover:not(:disabled) { border-color: var(--copper); color: var(--copper); }
+.ui-btn-ghost { background: transparent; color: var(--ink); border: 1px solid transparent; }
+.ui-btn-ghost:hover:not(:disabled) { color: var(--copper); }
+.ui-btn:disabled { opacity: .45; cursor: default; }

@@ -1,0 +1,7 @@
+.ui-sketch { margin: 0; padding: 10px 12px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-m); }
+.ui-sketch svg { display: block; width: 100%; max-width: 460px; height: auto; margin-inline: auto; }
+.ui-sketch-strip { fill: var(--pcb); stroke: var(--pcb-edge); }
+.ui-sketch-hole { fill: var(--pad); }
+.ui-sketch-pin { font: 600 11px var(--font-mono); fill: var(--ink); }
+.ui-sketch-box { fill: var(--bg); stroke: var(--line); stroke-width: 1.2; }
+.ui-sketch-to { font: 11px var(--font-mono); fill: var(--ink); }

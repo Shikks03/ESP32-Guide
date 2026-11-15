@@ -1,0 +1,71 @@
+/* Design tokens: copied from the ESP Labs reference. Light on :root, dark via media query or [data-theme=dark]. */
+:root {
+  color-scheme: light dark;
+  --bg: #eef1f0; --surface: #f8faf9; --ink: #18221f; --muted: #56645f; --line: #c9d2ce;
+  --copper: #b0601f; --copper-soft: #f3dfcd;
+  --pcb: #14201c; --pcb-edge: #2a3a34; --silk: #e9efe9; --silk-dim: #8fa39a; --pad: #d4a24a;
+  --model-ink: #0d1714; --model-shadow: #0b1310;
+  --metal: #c9d1d4; --metal-dark: #7f8a8e; --plastic: #2b3331;
+  --hotspot: #0d8a86;
+  --part-light: #fff; --part-red: #e5484d; --part-green: #2f9e6a; --part-blue: #3e63dd; --part-sky: #3aa8e8;
+  --part-yellow: #f2bc2e; --part-orange: #f07a2a; --part-purple: #8e4ec6; --part-pink: #e0508f;
+  --part-teal: #13a39a; --part-glass: #1c2733; --part-screen: #2fd5c4;
+  --fam-system: var(--copper); --fam-memory: var(--part-purple); --fam-security: var(--part-red);
+  --fam-connectivity: var(--w-sda); --fam-timing: var(--part-orange); --fam-analog: var(--part-teal);
+  /* Radio = the reference's --ble blue (#1d5fd1 light / #7fb0ff dark); the BLE track token itself isn't used here. */
+  --fam-radio: #1d5fd1;
+  --ok: #1f7a4a; --warn: #a05a00; --danger: #b3261e; --power: #c2410c; --gnd: #3f4a46;
+  --scope-paper: #0c121c; --scope-grid: #1e2e42; --scope-trace: #5ae6be; --scope-ink: #e6ecf5;
+  --scope-muted: #788ca5; --scope-amber: #ffb03c; --scope-coral: #ff6054; --scope-dim: #222e3e;
+  --scope-indigo: #10162a; --scope-blue: #5aa0ff; --scope-violet: #b082ff; --scope-pink: #ff80c8;
+  --w-gnd: #2b2f2e; --w-vcc: #d1352b; --w-scl: #c99700; --w-sda: #2563c9; --w-res: #e07a10;
+  --w-dc: #1f9d55; --w-cs: #8a4fd0; --w-blk: #7d8b86; --w-btn: #c2255c;
+  --term-bg: #101614; --term-ink: #cfe0d8; --term-dim: #71877d; --term-info: #6fd3a1;
+  --term-warn: #f0b85a; --term-err: #ff7a6e; --term-line: #b0601f;
+  --card-white: #f3f5f7; --gold: #c9a227;
+  --code-bg: #fbfcfb; --code-gutter: #5f6e69;
+  --syn-keyword: #7a3fb8; --syn-type: #0b6b84; --syn-string: #2b7319; --syn-number: #a14700;
+  --syn-comment: #5d6c66; --syn-fn: #1d55a6; --syn-const: #a0257a; --syn-preproc: #95501a;
+  --spot: #f6e6d6; --spot-edge: #d08a4c; --lens: #e3eefc; --lens-edge: #4f7fd0;
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --leading: 1.55; --radius-s: 6px; --radius-m: 10px; --radius-l: 12px; --gutter: 16px;
+  --focus-ring: 2px solid var(--copper);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fam-radio: #7fb0ff;
+    --bg: #0f1513; --surface: #161e1b; --ink: #e4ebe7; --muted: #9aaba4; --line: #2b3833;
+    --copper: #e39a5c; --copper-soft: #3a2a1d; --pcb: #0a110e; --pcb-edge: #2f423a;
+    --hotspot: #4fd1c5;
+    --ok: #5fcf8f; --warn: #f0b85a; --danger: #ff8a80; --power: #ff9a5c; --gnd: #8a9a94;
+    --w-gnd: #a3aeaa; --w-vcc: #ff6b5e; --w-scl: #f5c542; --w-sda: #6aa2ff; --w-res: #ffa04a;
+    --w-dc: #4fd18b; --w-cs: #b88cff; --w-blk: #e6ece9; --w-btn: #ff7aa8;
+    --card-white: #e8ecef; --gold: #e0b93a;
+    --code-bg: #111816; --code-gutter: #8a9c95;
+    --syn-keyword: #c9a2ff; --syn-type: #6fd3e0; --syn-string: #9ad97a; --syn-number: #ffb26b;
+    --syn-comment: #8fa39a; --syn-fn: #8ab8ff; --syn-const: #ff94cf; --syn-preproc: #e8a86f;
+    --spot: #2e2419; --spot-edge: #b8783f; --lens: #172540; --lens-edge: #6a9be8;
+    --term-line: #e39a5c;
+  }
+}
+
+:root[data-theme="dark"] {
+  --fam-radio: #7fb0ff;
+  --bg: #0f1513; --surface: #161e1b; --ink: #e4ebe7; --muted: #9aaba4; --line: #2b3833;
+  --copper: #e39a5c; --copper-soft: #3a2a1d; --pcb: #0a110e; --pcb-edge: #2f423a;
+  --hotspot: #4fd1c5;
+  --ok: #5fcf8f; --warn: #f0b85a; --danger: #ff8a80; --power: #ff9a5c; --gnd: #8a9a94;
+  --w-gnd: #a3aeaa; --w-vcc: #ff6b5e; --w-scl: #f5c542; --w-sda: #6aa2ff; --w-res: #ffa04a;
+  --w-dc: #4fd18b; --w-cs: #b88cff; --w-blk: #e6ece9; --w-btn: #ff7aa8;
+  --card-white: #e8ecef; --gold: #e0b93a;
+  --code-bg: #111816; --code-gutter: #8a9c95;
+  --syn-keyword: #c9a2ff; --syn-type: #6fd3e0; --syn-string: #9ad97a; --syn-number: #ffb26b;
+  --syn-comment: #8fa39a; --syn-fn: #8ab8ff; --syn-const: #ff94cf; --syn-preproc: #e8a86f;
+  --spot: #2e2419; --spot-edge: #b8783f; --lens: #172540; --lens-edge: #6a9be8;
+  --term-line: #e39a5c;
+}
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }

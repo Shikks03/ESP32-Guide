@@ -1,0 +1,10 @@
+.layout-foot { margin: 0; font: 12px var(--font-mono); color: var(--muted); }
+.layout-progress {
+  position: fixed; inset: 0 0 auto; height: 3px; z-index: 20;
+  background: linear-gradient(90deg, transparent, var(--copper), transparent);
+  background-size: 50% 100%; background-repeat: no-repeat;
+  animation: layout-slide 1s linear infinite;
+}
+@keyframes layout-slide { 0% { background-position: -50% 0; } 100% { background-position: 150% 0; } }
+@media (prefers-reduced-motion: reduce) { .layout-progress { background: var(--copper); } }
+html[data-motion="calm"] .layout-progress { background: var(--copper); }

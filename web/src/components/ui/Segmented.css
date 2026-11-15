@@ -1,0 +1,6 @@
+.ui-seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.ui-seg button { display: grid; gap: 1px; min-height: 34px; padding: 7px 12px; font: 600 12.5px var(--font-mono); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-s); cursor: pointer; touch-action: manipulation; text-align: start; }
+.ui-seg button:hover { border-color: var(--copper); }
+.ui-seg button[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.ui-seg-label { display: inline-flex; align-items: center; gap: 6px; }
+.ui-seg small { font: 11px var(--font-mono); opacity: .75; }
