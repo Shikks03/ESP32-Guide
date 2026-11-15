@@ -1,62 +1,26 @@
-import { cloneElement, isValidElement } from 'react';
-import { ICONS_WIFI } from './lessonIcons/wifi';
-import { ICONS_RADAR } from './lessonIcons/radar';
-import { ICONS_BULB } from './lessonIcons/bulb';
+import type { HotspotId, TrackId } from '../content/types';
+import { IsoIcon } from './iso/iso';
+import { FIT } from './iso/fit';
+import { FALLBACK_ART, FAMILY_ART, HOTSPOT_ART, LESSON_ART, TRACK_ART } from './iso/art';
 
-const STROKE = { fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } as const;
+/** Illustrated icon for a lab. Unknown ids get the board. */
+export function LessonIcon({ id, size = 32 }: { id: string; size?: number }) {
+  return <IsoIcon size={size} fit={LESSON_ART[id] ? FIT.lesson[id] : FIT.fallback._}>{LESSON_ART[id] ?? FALLBACK_ART}</IsoIcon>;
+}
 
-/** Line icons for the node rail and lesson tile. Track icons live in ./lessonIcons; unknown ids get the chip icon. */
-export function LessonIcon({ id, size = 22 }: { id: string; size?: number }) {
-  // Radar icons are full <svg> elements; resize them in place.
-  const full = ICONS_RADAR[id];
-  if (isValidElement(full)) return cloneElement(full as React.ReactElement<{ width?: number; height?: number }>, { width: size, height: size });
-  let body;
-  switch (id) {
-    case '00':
-      body = (
-        <>
-          <path d="M4 22c4 0 5-6 9-6h6" />
-          <rect x="19" y="12" width="9" height="8" rx="2" />
-          <path d="M22 12V9M25 12V9" />
-        </>
-      );
-      break;
-    case '01':
-      body = (
-        <>
-          <rect x="8" y="8" width="16" height="16" rx="2" />
-          <circle cx="16" cy="16" r="2.5" />
-          <path d="M12 4v4M20 4v4M12 24v4M20 24v4M4 12h4M4 20h4M24 12h4M24 20h4" />
-        </>
-      );
-      break;
-    case '02':
-      body = (
-        <>
-          <path d="M16 28V14" />
-          <path d="M16 14c0-4 3-6 3-9" />
-          <circle cx="19" cy="5" r="1.6" />
-          <path d="M9 20c-2-2-2-6 0-8M23 20c2-2 2-6 0-8" />
-        </>
-      );
-      break;
-    default:
-      if (ICONS_WIFI[id] || ICONS_BULB[id]) {
-        body = ICONS_WIFI[id] ?? ICONS_BULB[id];
-        break;
-      }
-      body = (
-        <>
-          <rect x="8" y="8" width="16" height="16" rx="3" />
-          <path d="M12 4v4M20 4v4M12 24v4M20 24v4M4 12h4M4 20h4M24 12h4M24 20h4" />
-        </>
-      );
-  }
-  return (
-    <svg viewBox="0 0 32 32" width={size} height={size} aria-hidden="true" focusable="false" {...STROKE}>
-      {body}
-    </svg>
-  );
+/** Illustrated icon for a track. */
+export function TrackIcon({ id, size = 32 }: { id: TrackId; size?: number }) {
+  return <IsoIcon size={size} fit={FIT.track[id] ?? FIT.fallback._}>{TRACK_ART[id] ?? FALLBACK_ART}</IsoIcon>;
+}
+
+/** Illustrated icon for one of the six board parts on the home page. */
+export function HotspotIcon({ id, size = 40 }: { id: HotspotId; size?: number }) {
+  return <IsoIcon size={size} fit={FIT.hotspot[id] ?? FIT.fallback._}>{HOTSPOT_ART[id] ?? FALLBACK_ART}</IsoIcon>;
+}
+
+/** Illustrated icon for a chip-block family; `fam` is the lower-case family key. */
+export function FamilyIcon({ fam, size = 24 }: { fam: string; size?: number }) {
+  return <IsoIcon size={size} fit={FIT.family[fam] ?? FIT.fallback._}>{FAMILY_ART[fam] ?? FALLBACK_ART}</IsoIcon>;
 }
 
 export default LessonIcon;

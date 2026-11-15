@@ -23,6 +23,7 @@ import FloorPlan from './datasheet/FloorPlan';
 import { WebGLGate } from '../components/three/WebGLGate';
 import { useNear } from '../lib/useNear';
 import { FAMILIES, familyFromKey, familyKey } from './datasheet/families';
+import { FamilyIcon } from '../components/LessonIcon';
 import './DatasheetPage.css';
 
 const ChipLayers3D = lazy(() => import('../components/three/ChipLayers3D'));
@@ -388,6 +389,7 @@ export default function DatasheetPage() {
             return (
               <li key={f}>
                 <button type="button" className="ds-fam" data-fam={familyKey(f)} aria-pressed={family === f} onClick={() => setFamily(familyKey(f))}>
+                  <FamilyIcon fam={familyKey(f)} size={26} />
                   {f} <small>{n} {n === 1 ? 'block' : 'blocks'}</small>
                 </button>
               </li>

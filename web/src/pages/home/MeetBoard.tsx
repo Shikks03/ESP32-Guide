@@ -6,6 +6,7 @@ import type { Hotspot, HotspotId } from '../../content/types';
 import { Chip } from '../../components/ui';
 import { RichText } from '../../components/RichText';
 import { BoardStage } from './BoardStage';
+import { HotspotIcon, LessonIcon } from '../../components/LessonIcon';
 
 function HotCard({ h, on, onSelect }: { h: Hotspot; on: boolean; onSelect: (id: HotspotId) => void }) {
   const labs = LESSONS.filter((l) => l.hotspots.includes(h.id));
@@ -23,6 +24,7 @@ function HotCard({ h, on, onSelect }: { h: Hotspot; on: boolean; onSelect: (id: 
             onSelect(h.id);
           }}
         >
+          <span className="home-hcard-ic"><HotspotIcon id={h.id} size={42} /></span>
           <span className="home-hcard-n">{h.n}</span>
           {h.name}
         </button>
@@ -35,7 +37,7 @@ function HotCard({ h, on, onSelect }: { h: Hotspot; on: boolean; onSelect: (id: 
           <span>Used in</span>
           {first.map((l) => (
             <Link key={l.id} to={`/lessons/${l.id}`} title={l.title} onClick={(e) => e.stopPropagation()}>
-              <Chip>{l.code}</Chip>
+              <Chip><span className="home-used-lab"><LessonIcon id={l.id} size={20} />{l.code}</span></Chip>
             </Link>
           ))}
           {more > 0 && (

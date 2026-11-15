@@ -103,6 +103,7 @@ a.ds-cite:hover { color: var(--copper); border-color: var(--copper); }
 /* families */
 .ds-fams { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .ds-fam { display: inline-flex; align-items: baseline; gap: 8px; min-height: 40px; padding: 6px 14px; font: 700 14px var(--font-display); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--fam, var(--ink)); border-radius: var(--radius-m); cursor: pointer; }
+.ds-fam .iso { align-self: center; margin-inline-start: -4px; }
 .ds-fam small { font: 12px var(--font-mono); color: var(--muted); }
 .ds-fam[aria-pressed="true"] { border-color: var(--fam, var(--ink)); background: color-mix(in oklab, var(--fam, var(--ink)) 14%, var(--surface)); }
 

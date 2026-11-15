@@ -9,7 +9,7 @@ import { BETWEEN_LESSONS, OPEN_FOLDER_TIP, PATH_NOTE, PIO_TERMINAL_NOTE } from '
 import { BoardSvg } from '../components/BoardSvg';
 import { SerialMonitor } from '../components/SerialMonitor';
 import { WiringSketch } from '../components/WiringSketch';
-import { LessonIcon } from '../components/LessonIcon';
+import { LessonIcon, TrackIcon } from '../components/LessonIcon';
 import { RichText } from '../components/RichText';
 import { Card, Chip, CommandBox, MicroLabel, PinChip, Segmented, SectionHeading, StatusBar, StatusMark, StatusPill } from '../components/ui';
 import { initialLedState, ledLevel, type LedState } from '../lib/ledSim';
@@ -98,7 +98,7 @@ function TrackTabs({ trackId }: { trackId: string }) {
                 aria-current={t.id === trackId ? 'true' : undefined}
                 title={title}
               >
-                <span className="lesson-track-ico"><LessonIcon id={first} size={18} /></span>
+                <span className="lesson-track-ico"><TrackIcon id={t.id} size={28} /></span>
                 <span className="lesson-track-name">{t.title}</span>
                 <StatusBar statuses={sts} />
                 <span className="lesson-track-count">{working}/{sts.length}</span>
@@ -125,7 +125,7 @@ function NodeRail({ lesson }: { lesson: Lesson }) {
           const inner = (
             <>
               <span className="lesson-node">
-                <LessonIcon id={l.id} size={current ? 26 : 22} />
+                <LessonIcon id={l.id} size={current ? 46 : 38} />
                 <span className="lesson-node-mark"><StatusMark status={st} size={14} decorative /></span>
               </span>
               <span className="lesson-node-id">{l.code}</span>
@@ -305,7 +305,7 @@ function LessonView({ lesson }: { lesson: Lesson }) {
     <header className="lesson-head">
       <div className="lesson-head-top">
         <div className="lesson-tile">
-          <LessonIcon id={lesson.id} size={34} />
+          <LessonIcon id={lesson.id} size={54} />
           <span className="lesson-tile-mark"><StatusMark status={status} size={18} /></span>
         </div>
         <div className="lesson-head-title">
@@ -546,7 +546,7 @@ function LessonView({ lesson }: { lesson: Lesson }) {
         {isTrackEnd ? (
           nextTrack && nextTrackFirst ? (
             <Link className="lesson-banner" to={`/lessons/${nextTrackFirst.id}`} style={{ ['--track' as string]: TRACK_COLOR[nextTrack.id] }}>
-              <span className="lesson-banner-ico"><LessonIcon id={nextTrackFirst.id} size={30} /></span>
+              <span className="lesson-banner-ico"><TrackIcon id={nextTrack.id} size={46} /></span>
               <span className="lesson-banner-text">
                 <span className="lesson-banner-eyebrow">End of this track · next track</span>
                 <span className="lesson-banner-title">{nextTrack.title}</span>
@@ -565,7 +565,7 @@ function LessonView({ lesson }: { lesson: Lesson }) {
         ) : (
           nextInTrack && (
             <Link className="lesson-banner" to={`/lessons/${nextInTrack.id}`} style={{ ['--track' as string]: TRACK_COLOR[nextInTrack.track] }}>
-              <span className="lesson-banner-ico"><LessonIcon id={nextInTrack.id} size={30} /></span>
+              <span className="lesson-banner-ico"><LessonIcon id={nextInTrack.id} size={46} /></span>
               <span className="lesson-banner-text">
                 <span className="lesson-banner-eyebrow">Next lesson</span>
                 <span className="lesson-banner-title"><b>{nextInTrack.code}</b>{nextInTrack.name}</span>

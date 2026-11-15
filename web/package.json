@@ -1,13 +1,14 @@
 {
   "name": "esp32-bench-guide-web",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit -p tsconfig.app.json && vite build",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "icons:fit": "node scripts/iso-fit.mjs"
   },
   "dependencies": {
     "@react-three/drei": "9.114.0",

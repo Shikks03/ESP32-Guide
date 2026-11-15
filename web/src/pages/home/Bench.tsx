@@ -16,14 +16,14 @@ function Tile({ lesson, status, add }: { lesson: Lesson; status: LabStatus; add?
     <li>
       <Link className="home-rtile" data-near={add ? 'true' : undefined} to={`/lessons/${lesson.id}`}>
         <span className="home-rtile-ic">
-          <LessonIcon id={lesson.id} size={22} />
+          <LessonIcon id={lesson.id} size={40} />
           <span className="home-rtile-mark"><StatusMark status={status} size={11} /></span>
         </span>
         <span className="home-rtile-id">{lesson.code}</span>
         <span className="home-rtile-name">{lesson.name}</span>
         {part && (
           <span className="home-rtile-add">
-            + <PartIcon id={part.id} size={14} />
+            + <PartIcon id={part.id} size={24} />
             <span className="visually-hidden">add {part.name}</span>
           </span>
         )}
@@ -67,7 +67,7 @@ export function Bench({ statuses }: { statuses: Record<string, LabStatus> }) {
       <div className="home-bench">
         <div className="home-card home-parts">
           <p className="home-basics">
-            <PartIcon id="board" size={20} />
+            <PartIcon id="board" size={34} />
             Every lab: the board and a USB-C data cable
           </p>
           <div className="home-parts-tools">
@@ -91,7 +91,7 @@ export function Bench({ statuses }: { statuses: Record<string, LabStatus> }) {
                   <li key={p.id}>
                     <button type="button" className="home-part" aria-pressed={on} onClick={() => toggle(p.id)}>
                       <span className="home-part-ic">
-                        <PartIcon id={p.id} />
+                        <PartIcon id={p.id} size={38} />
                         <span className="home-part-tick" aria-hidden="true">
                           {on && <svg viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 6.2l2.2 2.2L9.5 3.8" /></svg>}
                         </span>

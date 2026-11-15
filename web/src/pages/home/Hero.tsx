@@ -74,7 +74,7 @@ export function Hero({ statuses }: { statuses: Record<string, LabStatus> }) {
         <p className="home-start-kicker" id="home-start-h">{resumed ? 'Pick up where you left off' : 'Start here'}</p>
         <div className="home-start-body">
           <span className="home-start-badge">
-            <LessonIcon id={source.id} size={36} />
+            <LessonIcon id={source.id} size={66} />
             <b>{source.code}</b>
           </span>
           <div>

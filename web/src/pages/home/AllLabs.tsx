@@ -4,7 +4,7 @@ import { lessonsInTrack } from '../../content/lessons';
 import type { LabStatus } from '../../content/types';
 import { STATUS_LABEL, STATUS_ORDER } from '../../content/types';
 import { StatusMark } from '../../components/ui';
-import { LessonIcon } from '../../components/LessonIcon';
+import { LessonIcon, TrackIcon } from '../../components/LessonIcon';
 import { useCalm } from '../../state/settings';
 import { TRACK_COLOR } from '../../content/trackColors';
 
@@ -51,7 +51,7 @@ export function AllLabs({ statuses }: { statuses: Record<string, LabStatus> }) {
               <div className="home-track-info">
                 <span className="home-badge">
                   <Ring working={working} total={lessons.length} calm={calm} />
-                  <LessonIcon id={t.lessonIds[0]} size={22} />
+                  <TrackIcon id={t.id} size={34} />
                 </span>
                 <div>
                   <h3>{t.title}</h3>
@@ -65,7 +65,7 @@ export function AllLabs({ statuses }: { statuses: Record<string, LabStatus> }) {
                   const inner = (
                     <>
                       <span className="home-tile-ic">
-                        <LessonIcon id={l.id} size={26} />
+                        <LessonIcon id={l.id} size={52} />
                         <span className="home-tile-mark"><StatusMark status={s} size={12} /></span>
                       </span>
                       <span className="home-tile-id">{l.code}</span>

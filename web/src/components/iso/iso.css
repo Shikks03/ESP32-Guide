@@ -1,0 +1,8 @@
+/* Illustrated isometric icons (see iso.tsx). */
+.iso { flex: none; display: inline-block; overflow: visible; vertical-align: middle; }
+.iso-ink { stroke: var(--model-ink); stroke-width: 1px; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
+.iso[data-small] .iso-ink { stroke-width: .6px; }
+.iso-casing { fill: none; stroke: var(--model-ink); stroke-linecap: round; stroke-linejoin: round; }
+.iso-wire { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.iso-shadow { fill: var(--model-shadow); opacity: .16; }
+.iso-glow { pointer-events: none; }

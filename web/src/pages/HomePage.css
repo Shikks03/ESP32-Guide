@@ -71,7 +71,7 @@
 .home-part { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 56px; padding: 8px 10px; text-align: left; font: 15px var(--font-body); color: var(--ink); background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-m); cursor: pointer; transition: border-color .2s, background .2s; }
 .home-part:hover { border-color: color-mix(in oklab, var(--copper) 60%, var(--line)); }
 .home-part[aria-pressed="true"] { border-color: var(--copper); background: color-mix(in oklab, var(--copper) 12%, var(--surface)); }
-.home-part-ic { position: relative; flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 8px; background: var(--bg); color: var(--muted); }
+.home-part-ic { position: relative; flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 8px; background: var(--bg); color: var(--muted); }
 .home-part[aria-pressed="true"] .home-part-ic { color: var(--copper); }
 .home-part-txt { display: grid; min-width: 0; flex: 1; line-height: 1.25; }
 .home-part-name { font-weight: 600; font-size: 14px; overflow-wrap: anywhere; }
@@ -89,7 +89,7 @@
 .home-rtiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
 .home-rtile { display: grid; justify-items: start; gap: 2px; padding: 8px; color: var(--ink); text-decoration: none; border-radius: var(--radius-m); transition: transform .2s, box-shadow .2s; }
 .home-rtile:hover { transform: translateY(-2px); box-shadow: 0 8px 16px -10px rgba(0,0,0,.4); }
-.home-rtile-ic { position: relative; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; border: 2px solid var(--ok); background: color-mix(in oklab, var(--ok) 10%, var(--surface)); color: var(--ink); }
+.home-rtile-ic { position: relative; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 12px; border: 2px solid var(--ok); background: color-mix(in oklab, var(--ok) 10%, var(--surface)); color: var(--ink); }
 .home-rtile[data-near="true"] .home-rtile-ic { border-style: dashed; border-color: var(--w-sda); background: color-mix(in oklab, var(--w-sda) 8%, var(--surface)); }
 .home-rtile-mark { position: absolute; right: -5px; bottom: -5px; background: var(--surface); border-radius: 50%; display: grid; }
 .home-rtile-id { font: 700 11px var(--font-mono); color: var(--ok); margin-top: 4px; }
@@ -110,6 +110,8 @@
 .home-hcard h3 { margin: 0; }
 .home-hcard-btn { display: flex; align-items: center; gap: 8px; padding: 0; background: none; border: 0; color: var(--ink); cursor: pointer; font: 800 14px var(--font-display); font-stretch: 75%; text-transform: uppercase; letter-spacing: .1em; text-align: left; }
 .home-hcard-n { flex: none; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--hotspot); color: var(--surface); font: 700 11px var(--font-mono); letter-spacing: 0; }
+.home-hcard-ic { flex: none; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 12px; background: var(--bg); }
+.home-used-lab { display: inline-flex; align-items: center; gap: 4px; }
 .home-hcard p { margin: 0; font-size: 13.5px; color: var(--muted); }
 .home-used { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font: 12px var(--font-mono); }
 .home-used > span:first-child { color: var(--muted); }
@@ -146,9 +148,10 @@
 /* reference: the tile tints, the pad lifts and tilts */
 a.home-tile:hover { background: color-mix(in oklab, var(--tc) 10%, var(--bg)); }
 a.home-tile:hover .home-tile-ic { transform: translateY(-3px) rotate(-2deg); }
-.home-tile-ic { position: relative; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 14px; border: 2px solid var(--tc); background: color-mix(in oklab, var(--tc) 10%, var(--surface)); transition: transform .2s; }
+.home-tile-ic { position: relative; display: grid; place-items: center; width: 66px; height: 66px; border-radius: 16px; border: 2px solid var(--tc); background: color-mix(in oklab, var(--tc) 10%, var(--surface)); transition: transform .2s; }
 .home-tile[data-state="planned"] .home-tile-ic { border-style: dashed; background: transparent; color: var(--muted); }
 .home-tile[data-state="planned"] { cursor: default; }
+.home-tile[data-state="planned"] .iso, .home-track[data-planned] .home-badge .iso { filter: grayscale(1); opacity: .55; }
 .home-tile-mark { position: absolute; right: -5px; bottom: -5px; display: grid; background: var(--surface); border-radius: 50%; }
 .home-tile-id { margin-top: 6px; font: 700 11px var(--font-mono); color: var(--tc); }
 .home-tile-name { font-weight: 600; font-size: 12.5px; line-height: 1.2; }
